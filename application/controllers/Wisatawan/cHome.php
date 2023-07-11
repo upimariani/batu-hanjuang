@@ -27,7 +27,7 @@ class cHome extends CI_Controller
 		$data_cart = array(
 			'name' => $data->nama_tiket,
 			'id' => $data->id_tiket,
-			'price' => $data->harga - ($data->diskon / 100 * $data->harga),
+			'price' => $data->harga - (5 / 100 * $data->harga),
 			'qty' => '1'
 		);
 		$this->cart->insert($data_cart);

@@ -28,9 +28,11 @@ class cLogin extends CI_Controller
 			$data_cek = $this->mLogin->login_wisatawan($username, $password);
 			if ($data_cek) {
 				$id = $data_cek->id_wisatawan;
+				$level_member = $data_cek->level_member;
 
 				$array = array(
-					'id_wisatawan' => $id
+					'id_wisatawan' => $id,
+					'level' => $level_member
 				);
 
 				$this->session->set_userdata($array);
@@ -76,6 +78,7 @@ class cLogin extends CI_Controller
 	{
 
 		$this->session->unset_userdata('id_wisatawan');
+		$this->session->unset_userdata('level');
 		$this->session->set_flashdata('success', 'Anda Berhasil Logout!!!');
 		redirect('Wisatawan/cLogin', 'refresh');
 	}

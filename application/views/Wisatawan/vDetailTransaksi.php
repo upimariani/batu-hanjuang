@@ -37,11 +37,33 @@
 								<tr>
 									<td><?= $no++ ?></td>
 									<td><?= $value->nama_tiket ?></td>
-									<td>Rp. <?= number_format($value->harga - ($value->diskon / 100 * $value->harga)) ?></td>
+									<?php
+									if ($detail['transaksi']->level_member == '1') {
+									?>
+										<td>Rp. <?= number_format($value->harga - (5 / 100 * $value->harga)) ?></td>
+									<?php
+									} else {
+									?>
+										<td>Rp. <?= number_format($value->harga) ?></td>
+
+									<?php
+									}
+									?>
+
 									<td><?= $value->qty ?></td>
-									<td>
-										Rp. <?= number_format(($value->harga - ($value->diskon / 100 * $value->harga)) * $value->qty) ?>
-									</td>
+									<?php
+									if ($detail['transaksi']->level_member == '1') {
+									?>
+										<td>Rp. <?= number_format(($value->harga - (5 / 100 * $value->harga)) * $value->qty) ?></td>
+
+									<?php
+									} else {
+									?>
+										<td>Rp. <?= number_format($value->harga * $value->qty) ?></td>
+
+									<?php
+									}
+									?>
 								</tr>
 							<?php
 							}

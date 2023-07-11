@@ -31,13 +31,13 @@
 							</a>
 						</li>
 
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a class="nav-link <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cDiskon') {
 													echo 'active';
 												}  ?>" href="<?= base_url('Admin/cDiskon') ?>">
 								<i class="fas fa-percent"></i> Diskon
 							</a>
-						</li>
+						</li> -->
 						<li class="nav-item">
 							<a class="nav-link <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cUser') {
 													echo 'active';
