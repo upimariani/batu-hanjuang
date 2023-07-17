@@ -60,6 +60,13 @@
 								<i class="far fa-user"></i> Wisatawan
 							</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cProsesMetode') {
+													echo 'active';
+												}  ?>" href="<?= base_url('Admin/cProsesMetode') ?>">
+								<i class="fas fa-cog"></i> Proses Metode KNN
+							</a>
+						</li>
 					<?php
 					}
 					?>

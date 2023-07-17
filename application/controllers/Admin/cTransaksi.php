@@ -48,12 +48,20 @@ class cTransaksi extends CI_Controller
 		}
 
 		// echo '<br>';
-		$max_recency = max($var_recency);
-		$max_frequency = max($var_frequency);
-		$max_monetary = max($var_monetary);
+		// $max_recency = max($var_recency);
+		// $max_frequency = max($var_frequency);
+		// $max_monetary = max($var_monetary);
 		// echo $max_recency . '<br>';
 		// echo $max_frequency . '<br>';
 		// echo $max_monetary . '<br>';
+
+		// echo '<br>';
+		// $rn = $var_recency[0] / $max_recency;
+		// $fn = $var_frequency[0] / $max_frequency;
+		// $mn = $var_monetary[0] / $max_monetary;
+		// echo $var_recency[0] . '|' . $rn . '<br>';
+		// echo $var_frequency[0] . '|' . $fn . '<br>';
+		// echo $var_monetary[0] . '|' . $mn . '<br>';
 
 
 		//menentukan rumus euclidean Distance
