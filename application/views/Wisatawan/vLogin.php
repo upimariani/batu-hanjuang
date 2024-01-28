@@ -50,6 +50,17 @@
 							<input type="password" name="password" id="pass">
 							<?= form_error('password', '<small class="text-danger">', '</small>') ?>
 						</div>
+						<hr>
+
+						<div class="group-input">
+							<label for="pass">Hak Akses *</label>
+							<select class="form-control" name="hak_akses">
+								<option value="">---Pilih Hak Akses---</option>
+								<option value="1">Wisatawan</option>
+								<option value="2">Admin/Pengelola</option>
+							</select>
+							<?= form_error('hak_akses', '<small class="text-danger">', '</small>') ?>
+						</div>
 
 						<button type="submit" class="site-btn login-btn">Sign In</button>
 					</form>

@@ -60,25 +60,31 @@
 									<?php
 									if ($transaksi['transaksi']->level_member == '1') {
 									?>
-										<td>Rp. <?= number_format($value->harga - (5 / 100 * $value->harga)) ?></td>
+										<td>Rp. <?= number_format($value->harga - (2 / 100 * $value->harga)) ?></td>
+									<?php
+									} else if ($transaksi['transaksi']->level_member == '2') {
+									?>
+										<td>Rp. <?= number_format($value->harga - (3 / 100 * $value->harga)) ?></td>
 									<?php
 									} else {
 									?>
-										<td>Rp. <?= number_format($value->harga) ?></td>
-
+										<td>Rp. <?= number_format($value->harga - (3 / 100 * $value->harga)) ?></td>
 									<?php
 									}
-									?><td><?= $value->qty ?></td>
+									?>
+									<td><?= $value->qty ?></td>
 									<?php
 									if ($transaksi['transaksi']->level_member == '1') {
 									?>
-										<td>Rp. <?= number_format(($value->harga - (5 / 100 * $value->harga)) * $value->qty) ?></td>
-
+										<td>Rp. <?= number_format(($value->harga - (2 / 100 * $value->harga)) * $value->qty) ?></td>
+									<?php
+									} else if ($transaksi['transaksi']->level_member == '2') {
+									?>
+										<td>Rp. <?= number_format(($value->harga - (3 / 100 * $value->harga)) * $value->qty) ?></td>
 									<?php
 									} else {
 									?>
-										<td>Rp. <?= number_format($value->harga * $value->qty) ?></td>
-
+										<td>Rp. <?= number_format(($value->harga - (3 / 100 * $value->harga)) * $value->qty) ?></td>
 									<?php
 									}
 									?>

@@ -59,6 +59,16 @@ class cTransaksi extends CI_Controller
 			redirect('Wisatawan/cTransaksi');
 		}
 	}
+	public function review($id)
+	{
+		$data = array(
+			'id_transaksi' => $id,
+			'review' => $this->input->post('review')
+		);
+		$this->db->insert('review', $data);
+		$this->session->set_flashdata('success', 'Review Berhasil Dikirim!');
+		redirect('Wisatawan/cTransaksi');
+	}
 }
 
 /* End of file cTransaksi.php */

@@ -108,10 +108,17 @@
 								<?php
 								if ($this->session->level == '1') {
 								?>
+									<div class="sale">Sale of member 2%</div>
+								<?php
+								} else if ($this->session->level == '2') {
+								?>
+									<div class="sale">Sale of member 3%</div>
+								<?php
+								} else if ($this->session->level == '3') {
+								?>
 									<div class="sale">Sale of member 5%</div>
 								<?php
-								}
-								?>
+								} ?>
 
 								<div class="icon">
 									<i class="icon_heart_alt"></i>
@@ -150,9 +157,19 @@
 									<h5><?= $value->nama_tiket ?></h5>
 								</a>
 								<div class="product-price">
-									Rp. <?= number_format($value->harga - (5 / 100 * $value->harga)) ?>
+									<del>Rp. <?= number_format($value->harga) ?></del>
+
 									<?php if ($this->session->level == '1') {
 									?>
+										Rp. <?= number_format($value->harga - (2 / 100 * $value->harga)) ?>
+									<?php
+									} else if ($this->session->level == '2') {
+									?>
+										Rp. <?= number_format($value->harga - (3 / 100 * $value->harga)) ?>
+									<?php
+									} else if ($this->session->level == '3') {
+									?>
+										Rp. <?= number_format($value->harga - (5 / 100 * $value->harga)) ?>
 									<?php
 									} ?>
 

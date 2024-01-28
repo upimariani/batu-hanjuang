@@ -60,13 +60,13 @@
 								<i class="far fa-user"></i> Wisatawan
 							</a>
 						</li>
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a class="nav-link <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cProsesMetode') {
 													echo 'active';
 												}  ?>" href="<?= base_url('Admin/cProsesMetode') ?>">
 								<i class="fas fa-cog"></i> Proses Metode KNN
 							</a>
-						</li>
+						</li> -->
 					<?php
 					}
 					?>
@@ -77,13 +77,13 @@
 						<?php
 						if ($this->session->userdata('id') != '') {
 						?>
-							<a class="nav-link d-block" href="<?= base_url('Admin/cLogin/logout') ?>">
+							<a class="nav-link d-block" href="<?= base_url('Wisatawan/cLogin/logout') ?>">
 								Admin, <b>Logout</b>
 							</a>
 						<?php
 						} else {
 						?>
-							<a class="nav-link d-block" href="<?= base_url('Admin/cLogin') ?>">
+							<a class="nav-link d-block" href="<?= base_url('Wisatawan/cLogin') ?>">
 								Admin, <b>Login</b>
 							</a>
 						<?php

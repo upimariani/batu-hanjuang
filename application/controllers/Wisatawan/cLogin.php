@@ -15,6 +15,7 @@ class cLogin extends CI_Controller
 	{
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_rules('hak_akses', 'Hak Akses', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('Wisatawan/Layouts/head');
@@ -22,24 +23,50 @@ class cLogin extends CI_Controller
 			$this->load->view('Wisatawan/vLogin');
 			$this->load->view('Wisatawan/Layouts/footer');
 		} else {
+			$hak_akses = $this->input->post('hak_akses');
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 
-			$data_cek = $this->mLogin->login_wisatawan($username, $password);
-			if ($data_cek) {
-				$id = $data_cek->id_wisatawan;
-				$level_member = $data_cek->level_member;
+			if ($hak_akses == '1') {
+				$data_cek = $this->mLogin->login_wisatawan($username, $password);
+				if ($data_cek) {
+					$id = $data_cek->id_wisatawan;
+					$level_member = $data_cek->level_member;
+					$nama = $data_cek->nama_wisatawan;
 
-				$array = array(
-					'id_wisatawan' => $id,
-					'level' => $level_member
-				);
+					$array = array(
+						'id_wisatawan' => $id,
+						'level' => $level_member,
+						'nama' => $nama
+					);
 
-				$this->session->set_userdata($array);
-				redirect('Wisatawan/cHome', 'refresh');
+					$this->session->set_userdata($array);
+					redirect('Wisatawan/cHome', 'refresh');
+				} else {
+					$this->session->set_flashdata('error', 'Username dan Password Anda Salah!!!');
+					redirect('Wisatawan/cLogin', 'refresh');
+				}
 			} else {
-				$this->session->set_flashdata('error', 'Username dan Password Anda Salah!!!');
-				redirect('Wisatawan/cLogin', 'refresh');
+				$data_cek = $this->mLogin->login($username, $password);
+				if ($data_cek) {
+					$level = $data_cek->level_user;
+					$id = $data_cek->id_user;
+
+					$array = array(
+						'id' => $id
+					);
+
+					$this->session->set_userdata($array);
+
+					if ($level == '1') {
+						redirect('Admin/cDashboard', 'refresh');
+					} else {
+						redirect('Pengelola/cDashboard', 'refresh');
+					}
+				} else {
+					$this->session->set_flashdata('error', 'Username dan Password Anda Salah!!!');
+					redirect('Wisatawan/cLogin', 'refresh');
+				}
 			}
 		}
 	}
@@ -79,6 +106,7 @@ class cLogin extends CI_Controller
 
 		$this->session->unset_userdata('id_wisatawan');
 		$this->session->unset_userdata('level');
+		$this->session->unset_userdata('nama');
 		$this->session->set_flashdata('success', 'Anda Berhasil Logout!!!');
 		redirect('Wisatawan/cLogin', 'refresh');
 	}

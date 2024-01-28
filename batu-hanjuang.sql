@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jun 2023 pada 17.09
--- Versi server: 10.4.6-MariaDB
--- Versi PHP: 7.3.9
+-- Generation Time: Aug 16, 2023 at 10:03 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_transaksi`
+-- Table structure for table `detail_transaksi`
 --
 
 CREATE TABLE `detail_transaksi` (
@@ -36,7 +36,7 @@ CREATE TABLE `detail_transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `detail_transaksi`
+-- Dumping data for table `detail_transaksi`
 --
 
 INSERT INTO `detail_transaksi` (`id_detail`, `id_transaksi`, `id_tiket`, `qty`) VALUES
@@ -84,12 +84,13 @@ INSERT INTO `detail_transaksi` (`id_detail`, `id_transaksi`, `id_tiket`, `qty`) 
 (42, 31, 1, 1),
 (43, 32, 2, 1),
 (44, 33, 8, 1),
-(45, 34, 6, 1);
+(45, 34, 6, 1),
+(46, 35, 6, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `diskon`
+-- Table structure for table `diskon`
 --
 
 CREATE TABLE `diskon` (
@@ -102,7 +103,7 @@ CREATE TABLE `diskon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `diskon`
+-- Dumping data for table `diskon`
 --
 
 INSERT INTO `diskon` (`id_diskon`, `id_tiket`, `tgl_diskon`, `diskon`, `nama_diskon`, `member`) VALUES
@@ -111,7 +112,7 @@ INSERT INTO `diskon` (`id_diskon`, `id_tiket`, `tgl_diskon`, `diskon`, `nama_dis
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `review`
+-- Table structure for table `review`
 --
 
 CREATE TABLE `review` (
@@ -124,7 +125,7 @@ CREATE TABLE `review` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tiket`
+-- Table structure for table `tiket`
 --
 
 CREATE TABLE `tiket` (
@@ -137,7 +138,7 @@ CREATE TABLE `tiket` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tiket`
+-- Dumping data for table `tiket`
 --
 
 INSERT INTO `tiket` (`id_tiket`, `nama_tiket`, `deskripsi`, `jml_orang`, `type_tiket`, `harga`) VALUES
@@ -155,7 +156,7 @@ INSERT INTO `tiket` (`id_tiket`, `nama_tiket`, `deskripsi`, `jml_orang`, `type_t
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi`
+-- Table structure for table `transaksi`
 --
 
 CREATE TABLE `transaksi` (
@@ -169,7 +170,7 @@ CREATE TABLE `transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `transaksi`
+-- Dumping data for table `transaksi`
 --
 
 INSERT INTO `transaksi` (`id_transaksi`, `id_wisatawan`, `tgl_transaksi`, `tot_transaksi`, `stat_transaksi`, `stat_pembayaran`, `bukti_pembayaran`) VALUES
@@ -206,12 +207,13 @@ INSERT INTO `transaksi` (`id_transaksi`, `id_wisatawan`, `tgl_transaksi`, `tot_t
 (31, 8, '2023-05-08', '10000', 2, 1, '0'),
 (32, 8, '2023-05-08', '18000', 2, 1, '0'),
 (33, 8, '2023-05-08', '45000', 2, 1, '0'),
-(34, 8, '2023-05-08', '55000', 2, 1, '0');
+(34, 8, '2023-05-08', '55000', 1, 1, '0'),
+(35, 1, '2023-08-16', '53900', 0, 0, '0');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -225,7 +227,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `nama_user`, `alamat`, `no_hp`, `username`, `password`, `level_user`) VALUES
@@ -235,7 +237,7 @@ INSERT INTO `user` (`id_user`, `nama_user`, `alamat`, `no_hp`, `username`, `pass
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `wisatawan`
+-- Table structure for table `wisatawan`
 --
 
 CREATE TABLE `wisatawan` (
@@ -247,152 +249,153 @@ CREATE TABLE `wisatawan` (
   `username_wisatawan` varchar(30) NOT NULL,
   `password_wisatawan` varchar(30) NOT NULL,
   `no_hp_wisatawan` varchar(15) NOT NULL,
-  `level_member` int(11) NOT NULL
+  `level_member` int(11) NOT NULL,
+  `point` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `wisatawan`
+-- Dumping data for table `wisatawan`
 --
 
-INSERT INTO `wisatawan` (`id_wisatawan`, `nama_wisatawan`, `alamat`, `tgl_lahir`, `jk`, `username_wisatawan`, `password_wisatawan`, `no_hp_wisatawan`, `level_member`) VALUES
-(1, 'Ahmad Syahid', ' Ciberem', '30 Desember ', 'L', 'ahmad111', 'ahmad111', '89945360982', 1),
-(2, 'Dewi Rahayu', 'Ciberem', '24 Januari', 'P', 'dewirahayu111', 'dewirahayu111', '82143215678', 1),
-(3, 'Budi Santoso', 'Jalaksana', '3 Maret', 'L', 'budisantoso111', 'budisantoso111', '82145679132', 1),
-(4, 'Maya Sari', 'Jalaksana', '18 Januari', 'P', 'mayasari111', 'mayasari', '89965437891', 0),
-(5, 'Siti Aisyah', 'Kuningan', '21 Maret', 'P', 'sitiaisyah111', 'sitiaisyah111', '82176892456', 0),
-(6, 'Desi Wulandari', 'Kuningan', '16 Juni', 'P', 'desiwulandari111', 'desiwulandari111', '89987614562', 1),
-(7, 'Rina Fitriani', 'Kuningan', '12 juli', 'P', 'rinafitriani111', 'rinafitriani111', '82145980127', 1),
-(8, 'Indra Kusuma', 'Kuningan', '1 Januari', 'L', 'indrakusuma111', 'indrakusuma111', '89925679810', 1),
-(9, 'Agus Salim', 'Kuningan', '2023-04-14', 'L', 'agus111', 'agus111', '89887654543', 1),
-(10, 'Rizki Maulana', 'Kuningan', '2023-04-18', 'L', 'rizki111', 'rizki111', '89099123212', 1),
-(11, 'Andi Nugraha', 'Kuningan', '14 April', 'L', 'andinugraha111', 'andinugraha111', '89998712350', 1),
-(12, 'Mochammad Ali', 'Kuningan', '18 April', 'L', 'mochamadali111', 'mochamadali111', '82198011278', 0),
-(13, 'Rizki Maulana', 'Kuningan', '20 Januari', 'L', 'rizkimaulana111', 'rizkimaulana111', '82176890912', 0),
-(14, 'Rina Indriani', 'Setianegara', '4 April', 'P', 'rinaindriani111', 'rinaindriani111', '89945267891', 1),
-(15, 'Ahmad Ridwan', 'Setianegara', '17 Januari', 'L', 'ahmadridwan111', 'ahmadridwan111', '82165728901', 1),
-(16, 'Siti Rahayu', 'Cirebon ', '10 November', 'P', 'sitirahayu111', 'sitirahayu111', '82176091270', 0),
-(17, 'Ani Setiawati', 'Cirebon ', '15 September', 'P', 'anisetiawati111', 'anisetiawati111', '89909812379', 0),
-(18, 'Dewi Sulistiani', 'Cirebon ', '7 Maret', 'P', 'dewisulistiani111', 'dewisulistiani111', '82265718901', 0),
-(19, 'Joko Susanto', 'Cirebon ', '17 Juni', 'L', 'jokosusanto111', 'jokosusanto111', '89923760981', 0),
-(20, 'Rudi Hermawan', 'Cirebon ', '24 Januari', 'L', 'rudihermawan111', 'rudihermawan111', '89954217801', 0),
-(21, 'Andi Pratama', 'Cirebon ', '7 Desember', 'L', 'andipratama111', 'andipratama111', '89987012356', 0),
-(22, 'Anton Wijaya', 'Cirebon ', '9 Maret', 'L', 'antonwijaya111', 'antonwijaya111', '82134896571', 0),
-(23, 'Lina wulandari', 'Cirebon ', '28 September', 'P', 'linawlandari111', 'linawlandari111', '89971024586', 0),
-(24, 'Dedy Sutomo', 'Cirebon ', '14 November', 'L', 'dedysutomo111', 'dedysutomo111', '82154710923', 0),
-(25, 'Rina Maulida', 'Ancaran', '18 Februari', 'p', 'rinamaulida111', 'rinamaulida111', '82176120945', 0),
-(26, 'Hadi santoso', 'Ancaran', '21 Maret', 'L', 'hadisantoso111', 'hadisantoso111', '89965810976', 0),
-(27, 'Imam Sutisna', 'Ancaran', '18 Novemver', 'L', 'imamsutisan111', 'imamsutisna111', '89227810976', 0),
-(28, 'Desi Rahmawati', 'Ancaran', '9 September', 'P', 'desirahmawati111', 'desirahmawati111', '82115459822', 0),
-(29, 'Sri Rahayu', 'Ancaran', '7 Desember', 'P', 'srirahayu111', 'srirahayu111', '82154789644', 0),
-(30, 'Agus Susanto', 'Ancaran', '29 Maret', 'L', 'agussusanto111', 'agussusanto111', '82187615643', 0),
-(31, 'Anisa Setiawan', 'Ancaran', '8 Juni', 'P', 'anissetiawan111', 'anisasetiawan111', '8996578342', 0),
-(32, 'Maya Sulistiani', 'Ancaran', '24 November', 'P', 'mayasulistiani111', 'mayasuliatiani111', '82154718734', 0),
-(33, 'Heri Prasetyo', 'Linggarjati', '26 Juli', 'L', 'heriprasetyo111', 'heriprasetyo111', '89976915787', 0),
-(34, 'Nina Kusuma', 'Linggarjari', '14 September', 'P', 'ninakusuma111', 'ninakusuma111', '89987291071', 0),
-(35, 'Joko Wijaya', 'Cigandamekar', '31 Januari', 'L', 'jokowijaya111', 'jokowijaya111', '82145629865', 0),
-(36, 'Dewi Setyowati', 'Cigandamekar', '4 April', 'P', 'dewisetyowati111', 'dewisetyowati111', '82176542891', 0),
-(37, 'Surya Hermawan', 'Cigandamekar', '19 Desember', 'L', 'suryahermawan111', 'suryahermawan111', '89976532561', 0),
-(38, 'Nita Wulandari', 'Cigandamekar', '27 November', 'P', 'nitawulandari111', 'nitawulandari111', '82145367811', 0),
-(39, 'Heru Sutomo', 'Cigandamekar', '14 Maret', 'L', 'herusutomo111', 'herusutomo111', '89976421567', 0),
-(40, 'Lusi Maulida', 'Cigandamekar', '25 September', 'P', 'lusimaulida111', 'lusimaulida111', '82154367186', 0),
-(41, 'Rina rahmawati', 'Cikaso', '16 November', 'P', 'rinarahmawati111', 'rinarahmawati111', '82176534716', 0),
-(42, 'Siti Sutisna', 'Cikaso', '25 Januari', 'P', 'sitisutisna111', 'sitisutisna111', '82154267185', 0),
-(43, 'Toni Sutisna', 'Cikaso', '17 Desember', 'L', 'tonisutisna111', 'tonisutisna111', '82154367614', 0),
-(45, 'Ahmad Susanto', 'Cikaso', '3 September', 'L', 'ahmadsusanto111', 'ahmadsusanto111', '89927365416', 0),
-(46, 'Yani Wulandari', 'Cikaso', '4 April', 'P', 'yaniwulandari111', 'yaniwulandari111', '82176483916', 0),
-(47, 'Arif Setiawan', 'Cibentang', '27 Desember', 'L', 'arifsetiawan111', 'arifsetiawan111', '89976482682', 0),
-(48, 'Tuti Prasetyo', 'Cibentang', '24 Januari', 'P', 'tutiprasetyo111', 'tutiprasetyo111', '89926391074', 0),
-(49, 'Yudi Pratama', 'Sukamukti', '14 September', 'L', 'yudipratama111', 'yudipratama111', '82163574820', 0),
-(50, 'Nita Kusuma', 'Sukamukti', '16 Juli 1998', 'P', 'nitakusuma111', 'nitakusuma111', '89984372915', 0);
+INSERT INTO `wisatawan` (`id_wisatawan`, `nama_wisatawan`, `alamat`, `tgl_lahir`, `jk`, `username_wisatawan`, `password_wisatawan`, `no_hp_wisatawan`, `level_member`, `point`) VALUES
+(1, 'Ahmad Syahid', ' Ciberem', '30 Desember ', 'L', 'ahmad111', 'ahmad111', '89945360982', 2, 1200),
+(2, 'Dewi Rahayu', 'Ciberem', '24 Januari', 'P', 'dewirahayu111', 'dewirahayu111', '82143215678', 3, 11000),
+(3, 'Budi Santoso', 'Jalaksana', '3 Maret', 'L', 'budisantoso111', 'budisantoso111', '82145679132', 1, 0),
+(4, 'Maya Sari', 'Jalaksana', '18 Januari', 'P', 'mayasari111', 'mayasari', '89965437891', 1, 0),
+(5, 'Siti Aisyah', 'Kuningan', '21 Maret', 'P', 'sitiaisyah111', 'sitiaisyah111', '82176892456', 1, 0),
+(6, 'Desi Wulandari', 'Kuningan', '16 Juni', 'P', 'desiwulandari111', 'desiwulandari111', '89987614562', 1, 0),
+(7, 'Rina Fitriani', 'Kuningan', '12 juli', 'P', 'rinafitriani111', 'rinafitriani111', '82145980127', 1, 0),
+(8, 'Indra Kusuma', 'Kuningan', '1 Januari', 'L', 'indrakusuma111', 'indrakusuma111', '89925679810', 1, 180),
+(9, 'Agus Salim', 'Kuningan', '2023-04-14', 'L', 'agus111', 'agus111', '89887654543', 1, 0),
+(10, 'Rizki Maulana', 'Kuningan', '2023-04-18', 'L', 'rizki111', 'rizki111', '89099123212', 1, 0),
+(11, 'Andi Nugraha', 'Kuningan', '14 April', 'L', 'andinugraha111', 'andinugraha111', '89998712350', 1, 0),
+(12, 'Mochammad Ali', 'Kuningan', '18 April', 'L', 'mochamadali111', 'mochamadali111', '82198011278', 1, 0),
+(13, 'Rizki Maulana', 'Kuningan', '20 Januari', 'L', 'rizkimaulana111', 'rizkimaulana111', '82176890912', 1, 0),
+(14, 'Rina Indriani', 'Setianegara', '4 April', 'P', 'rinaindriani111', 'rinaindriani111', '89945267891', 1, 0),
+(15, 'Ahmad Ridwan', 'Setianegara', '17 Januari', 'L', 'ahmadridwan111', 'ahmadridwan111', '82165728901', 1, 0),
+(16, 'Siti Rahayu', 'Cirebon ', '10 November', 'P', 'sitirahayu111', 'sitirahayu111', '82176091270', 1, 0),
+(17, 'Ani Setiawati', 'Cirebon ', '15 September', 'P', 'anisetiawati111', 'anisetiawati111', '89909812379', 1, 0),
+(18, 'Dewi Sulistiani', 'Cirebon ', '7 Maret', 'P', 'dewisulistiani111', 'dewisulistiani111', '82265718901', 1, 0),
+(19, 'Joko Susanto', 'Cirebon ', '17 Juni', 'L', 'jokosusanto111', 'jokosusanto111', '89923760981', 1, 0),
+(20, 'Rudi Hermawan', 'Cirebon ', '24 Januari', 'L', 'rudihermawan111', 'rudihermawan111', '89954217801', 1, 0),
+(21, 'Andi Pratama', 'Cirebon ', '7 Desember', 'L', 'andipratama111', 'andipratama111', '89987012356', 1, 0),
+(22, 'Anton Wijaya', 'Cirebon ', '9 Maret', 'L', 'antonwijaya111', 'antonwijaya111', '82134896571', 1, 0),
+(23, 'Lina wulandari', 'Cirebon ', '28 September', 'P', 'linawlandari111', 'linawlandari111', '89971024586', 1, 0),
+(24, 'Dedy Sutomo', 'Cirebon ', '14 November', 'L', 'dedysutomo111', 'dedysutomo111', '82154710923', 1, 0),
+(25, 'Rina Maulida', 'Ancaran', '18 Februari', 'p', 'rinamaulida111', 'rinamaulida111', '82176120945', 1, 0),
+(26, 'Hadi santoso', 'Ancaran', '21 Maret', 'L', 'hadisantoso111', 'hadisantoso111', '89965810976', 1, 0),
+(27, 'Imam Sutisna', 'Ancaran', '18 Novemver', 'L', 'imamsutisan111', 'imamsutisna111', '89227810976', 1, 0),
+(28, 'Desi Rahmawati', 'Ancaran', '9 September', 'P', 'desirahmawati111', 'desirahmawati111', '82115459822', 1, 0),
+(29, 'Sri Rahayu', 'Ancaran', '7 Desember', 'P', 'srirahayu111', 'srirahayu111', '82154789644', 1, 0),
+(30, 'Agus Susanto', 'Ancaran', '29 Maret', 'L', 'agussusanto111', 'agussusanto111', '82187615643', 1, 0),
+(31, 'Anisa Setiawan', 'Ancaran', '8 Juni', 'P', 'anissetiawan111', 'anisasetiawan111', '8996578342', 1, 0),
+(32, 'Maya Sulistiani', 'Ancaran', '24 November', 'P', 'mayasulistiani111', 'mayasuliatiani111', '82154718734', 1, 0),
+(33, 'Heri Prasetyo', 'Linggarjati', '26 Juli', 'L', 'heriprasetyo111', 'heriprasetyo111', '89976915787', 1, 0),
+(34, 'Nina Kusuma', 'Linggarjari', '14 September', 'P', 'ninakusuma111', 'ninakusuma111', '89987291071', 1, 0),
+(35, 'Joko Wijaya', 'Cigandamekar', '31 Januari', 'L', 'jokowijaya111', 'jokowijaya111', '82145629865', 1, 0),
+(36, 'Dewi Setyowati', 'Cigandamekar', '4 April', 'P', 'dewisetyowati111', 'dewisetyowati111', '82176542891', 1, 0),
+(37, 'Surya Hermawan', 'Cigandamekar', '19 Desember', 'L', 'suryahermawan111', 'suryahermawan111', '89976532561', 1, 0),
+(38, 'Nita Wulandari', 'Cigandamekar', '27 November', 'P', 'nitawulandari111', 'nitawulandari111', '82145367811', 1, 0),
+(39, 'Heru Sutomo', 'Cigandamekar', '14 Maret', 'L', 'herusutomo111', 'herusutomo111', '89976421567', 1, 0),
+(40, 'Lusi Maulida', 'Cigandamekar', '25 September', 'P', 'lusimaulida111', 'lusimaulida111', '82154367186', 1, 0),
+(41, 'Rina rahmawati', 'Cikaso', '16 November', 'P', 'rinarahmawati111', 'rinarahmawati111', '82176534716', 1, 0),
+(42, 'Siti Sutisna', 'Cikaso', '25 Januari', 'P', 'sitisutisna111', 'sitisutisna111', '82154267185', 1, 0),
+(43, 'Toni Sutisna', 'Cikaso', '17 Desember', 'L', 'tonisutisna111', 'tonisutisna111', '82154367614', 1, 0),
+(45, 'Ahmad Susanto', 'Cikaso', '3 September', 'L', 'ahmadsusanto111', 'ahmadsusanto111', '89927365416', 1, 0),
+(46, 'Yani Wulandari', 'Cikaso', '4 April', 'P', 'yaniwulandari111', 'yaniwulandari111', '82176483916', 1, 0),
+(47, 'Arif Setiawan', 'Cibentang', '27 Desember', 'L', 'arifsetiawan111', 'arifsetiawan111', '89976482682', 1, 0),
+(48, 'Tuti Prasetyo', 'Cibentang', '24 Januari', 'P', 'tutiprasetyo111', 'tutiprasetyo111', '89926391074', 1, 0),
+(49, 'Yudi Pratama', 'Sukamukti', '14 September', 'L', 'yudipratama111', 'yudipratama111', '82163574820', 1, 0),
+(50, 'Nita Kusuma', 'Sukamukti', '16 Juli 1998', 'P', 'nitakusuma111', 'nitakusuma111', '89984372915', 1, 0);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `detail_transaksi`
+-- Indexes for table `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
   ADD PRIMARY KEY (`id_detail`);
 
 --
--- Indeks untuk tabel `diskon`
+-- Indexes for table `diskon`
 --
 ALTER TABLE `diskon`
   ADD PRIMARY KEY (`id_diskon`);
 
 --
--- Indeks untuk tabel `review`
+-- Indexes for table `review`
 --
 ALTER TABLE `review`
   ADD PRIMARY KEY (`id_review`);
 
 --
--- Indeks untuk tabel `tiket`
+-- Indexes for table `tiket`
 --
 ALTER TABLE `tiket`
   ADD PRIMARY KEY (`id_tiket`);
 
 --
--- Indeks untuk tabel `transaksi`
+-- Indexes for table `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id_transaksi`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Indeks untuk tabel `wisatawan`
+-- Indexes for table `wisatawan`
 --
 ALTER TABLE `wisatawan`
   ADD PRIMARY KEY (`id_wisatawan`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `detail_transaksi`
+-- AUTO_INCREMENT for table `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- AUTO_INCREMENT untuk tabel `diskon`
+-- AUTO_INCREMENT for table `diskon`
 --
 ALTER TABLE `diskon`
   MODIFY `id_diskon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `review`
+-- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
   MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tiket`
+-- AUTO_INCREMENT for table `tiket`
 --
 ALTER TABLE `tiket`
   MODIFY `id_tiket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `transaksi`
+-- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `wisatawan`
+-- AUTO_INCREMENT for table `wisatawan`
 --
 ALTER TABLE `wisatawan`
   MODIFY `id_wisatawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;

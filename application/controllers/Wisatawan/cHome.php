@@ -22,12 +22,19 @@ class cHome extends CI_Controller
 	}
 	public function add_to_cart($id)
 	{
-		$data = $this->db->query("SELECT tiket.id_tiket, nama_tiket, id_diskon, harga, diskon, member, type_tiket FROM tiket LEFT JOIN diskon ON tiket.id_tiket = diskon.id_tiket WHERE tiket.id_tiket=" . $id)->row();
+		$data = $this->db->query("SELECT * FROM tiket WHERE tiket.id_tiket=" . $id)->row();
+		if ($this->session->userdata('level') == '1') {
+			$harga = $data->harga - (2 / 100 * $data->harga);
+		} else if ($this->session->userdata('level') == '2') {
+			$harga = $data->harga - (3 / 100 * $data->harga);
+		} else {
+			$harga = $data->harga - (5 / 100 * $data->harga);
+		}
 
 		$data_cart = array(
 			'name' => $data->nama_tiket,
 			'id' => $data->id_tiket,
-			'price' => $data->harga - (5 / 100 * $data->harga),
+			'price' => $harga,
 			'qty' => '1'
 		);
 		$this->cart->insert($data_cart);

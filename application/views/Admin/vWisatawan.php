@@ -64,13 +64,17 @@
 									<td class="tm-product-name"><?= $value->no_hp_wisatawan ?></td>
 									<td class="tm-product-name"><span class="badge badge-success"><?= $value->username_wisatawan ?></span> <span class="badge badge-warning"><?= $value->password_wisatawan ?></span></td>
 									<td class="tm-product-name"><?php
-																if ($value->level_member == '0') {
+																if ($value->level_member == '1') {
 																?>
-											<span class="badge badge-danger">Non Member</span>
+											<span class="badge badge-danger">Member Clasic</span>
+										<?php
+																} else if ($value->level_member == '2') {
+										?>
+											<span class="badge badge-warning">Member Silver</span>
 										<?php
 																} else {
 										?>
-											<span class="badge badge-success">Member</span>
+											<span class="badge badge-success">Member Gold</span>
 										<?php
 																}
 										?>

@@ -13,10 +13,22 @@
 						<i class=" fa fa-envelope"></i>
 						batu_hanjuang@gmail.com
 					</div>
-					<div class="phone-service">
-						<i class=" fa fa-phone"></i>
-						+65 11.188.888
-					</div>
+
+					<?php
+					if ($this->session->userdata('id_wisatawan') != '') {
+					?>
+						<div class="phone-service">
+							<i class=" fa fa-user"></i>
+							Selamat Datang, <?= $this->session->userdata('nama') ?> <span class="badge bg-warning"><?php if ($this->session->userdata('level') == '1') {
+																														echo 'Clasic';
+																													} else if ($this->session->userdata('level') == '2') {
+																														echo 'Silver';
+																													} else {
+																														echo 'Gold';
+																													} ?></span>
+						</div>
+					<?php }
+					?>
 				</div>
 				<div class="ht-right">
 					<?php
@@ -130,6 +142,9 @@
 							<li <?php if ($this->uri->segment(1) == 'Wisatawan' && $this->uri->segment(2) == 'cTransaksi') {
 									echo 'class="active"';
 								}  ?>><a href="<?= base_url('Wisatawan/cTransaksi') ?>">Pesanan Saya</a></li>
+							<li <?php if ($this->uri->segment(1) == 'Wisatawan' && $this->uri->segment(2) == 'cReview') {
+									echo 'class="active"';
+								}  ?>><a href="<?= base_url('Wisatawan/cReview') ?>">review</a></li>
 						<?php
 						}
 						?>

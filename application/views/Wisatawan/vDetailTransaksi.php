@@ -40,12 +40,15 @@
 									<?php
 									if ($detail['transaksi']->level_member == '1') {
 									?>
-										<td>Rp. <?= number_format($value->harga - (5 / 100 * $value->harga)) ?></td>
+										<td>Rp. <?= number_format($value->harga - (2 / 100 * $value->harga)) ?></td>
+									<?php
+									} else if ($detail['transaksi']->level_member == '2') {
+									?>
+										<td>Rp. <?= number_format($value->harga - (3 / 100 * $value->harga)) ?></td>
 									<?php
 									} else {
 									?>
-										<td>Rp. <?= number_format($value->harga) ?></td>
-
+										<td>Rp. <?= number_format($value->harga - (3 / 100 * $value->harga)) ?></td>
 									<?php
 									}
 									?>
@@ -54,13 +57,15 @@
 									<?php
 									if ($detail['transaksi']->level_member == '1') {
 									?>
-										<td>Rp. <?= number_format(($value->harga - (5 / 100 * $value->harga)) * $value->qty) ?></td>
-
+										<td>Rp. <?= number_format(($value->harga - (2 / 100 * $value->harga)) * $value->qty) ?></td>
+									<?php
+									} else if ($detail['transaksi']->level_member == '2') {
+									?>
+										<td>Rp. <?= number_format(($value->harga - (3 / 100 * $value->harga)) * $value->qty) ?></td>
 									<?php
 									} else {
 									?>
-										<td>Rp. <?= number_format($value->harga * $value->qty) ?></td>
-
+										<td>Rp. <?= number_format(($value->harga - (3 / 100 * $value->harga)) * $value->qty) ?></td>
 									<?php
 									}
 									?>
@@ -76,7 +81,22 @@
 								<th>Rp. <?= number_format($detail['transaksi']->tot_transaksi) ?></th>
 							</tr>
 							<tr>
-								<td>&nbsp;</td>
+								<?php
+								if ($detail['transaksi']->review == NULL) {
+								?>
+									<form action="<?= base_url('Wisatawan/cTransaksi/review/' . $detail['transaksi']->id_transaksi) ?>" method="POST">
+										<td><textarea class="form-control" name="review" placeholder="Tuliskan review anda..." required></textarea>
+											<button type="submit" class="site-btn mt-3">Kirim</button>
+										</td>
+									</form>
+								<?php
+								} else {
+								?>
+									<td>&nbsp;</td>
+								<?php
+								}
+								?>
+
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>

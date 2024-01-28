@@ -22,7 +22,7 @@ class mTransaksi extends CI_Model
 	public function detail_transaksi_wisatawan($id)
 	{
 		$data['detail_transaksi'] = $this->db->query("SELECT * FROM `transaksi` JOIN detail_transaksi ON transaksi.id_transaksi=detail_transaksi.id_transaksi JOIN tiket ON tiket.id_tiket=detail_transaksi.id_tiket LEFT JOIN diskon ON tiket.id_tiket = diskon.id_tiket WHERE transaksi.id_transaksi='" . $id . "'")->result();
-		$data['transaksi'] = $this->db->query("SELECT * FROM `transaksi` JOIN wisatawan ON wisatawan.id_wisatawan=transaksi.id_wisatawan WHERE transaksi.id_transaksi='" . $id . "'")->row();
+		$data['transaksi'] = $this->db->query("SELECT transaksi.id_transaksi, review, tot_transaksi, level_member FROM `transaksi` JOIN wisatawan ON transaksi.id_wisatawan=wisatawan.id_wisatawan LEFT JOIN review ON review.id_transaksi=transaksi.id_transaksi WHERE transaksi.id_transaksi='" . $id . "'")->row();
 		return $data;
 	}
 	public function bayar($id, $data)
@@ -39,7 +39,7 @@ class mTransaksi extends CI_Model
 	public function detail_transaksi_admin($id)
 	{
 		$data['detail_transaksi'] = $this->db->query("SELECT * FROM `transaksi` JOIN detail_transaksi ON transaksi.id_transaksi=detail_transaksi.id_transaksi JOIN tiket ON tiket.id_tiket=detail_transaksi.id_tiket LEFT JOIN diskon ON tiket.id_tiket = diskon.id_tiket WHERE transaksi.id_transaksi='" . $id . "'")->result();
-		$data['transaksi'] = $this->db->query("SELECT * FROM `transaksi` JOIN wisatawan ON transaksi.id_wisatawan=wisatawan.id_wisatawan WHERE id_transaksi='" . $id . "'")->row();
+		$data['transaksi'] = $this->db->query("SELECT * FROM `transaksi` JOIN wisatawan ON transaksi.id_wisatawan=wisatawan.id_wisatawan WHERE transaksi.id_transaksi='" . $id . "'")->row();
 		return $data;
 	}
 	public function konfirmasi($id, $data)
